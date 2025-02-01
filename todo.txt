@@ -1,2 +1,2 @@
 x 1999-06-23 1999-06-23 BORN
-(B) 1999-06-23 make a dotfile repo
+x 2025-02-01 1999-06-23 make a dotfile repo
