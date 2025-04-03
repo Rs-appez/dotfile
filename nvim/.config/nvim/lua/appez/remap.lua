@@ -26,4 +26,4 @@ vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
 -- Python
-vim.keymap.set("n", "<leader>py", ":sp<CR>:term python3 %<CR>")
+vim.keymap.set("n", "<leader>py", ":sp<CR>:term time python3 %<CR>")
