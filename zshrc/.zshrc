@@ -120,11 +120,15 @@ source <(ng completion script)
 
 #neovim
 export PATH="$PATH:/opt/nvim-linux64/bin"
+export EDITOR="nvim"
 alias n=nvim
+alias nt="nvim /tmp/tmp_editor"
 
 #fly.io
 export FLYCTL_INSTALL="/home/appez/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+#rust
 . "$HOME/.cargo/env"
 
 # --- FZF ----
@@ -161,7 +165,6 @@ eval "$(pyenv init - zsh)"
 alias lg=lazygit
 
 # yazi
-export EDITOR="nvim"
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
