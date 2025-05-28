@@ -27,7 +27,7 @@ return {
             },
         })
         require("lspconfig").djlsp.setup({
-            cmd = { "/home/appez/.local/bin/djlsp" },
+            cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/djlsp") },
             filetypes = { "htmldjango" },
             init_options = {
                 django_settings_module = "",
