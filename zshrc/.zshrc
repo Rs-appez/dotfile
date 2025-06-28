@@ -131,6 +131,8 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 #rust
 . "$HOME/.cargo/env"
 
+#go
+export PATH=$PATH:/usr/local/go/bin/
 # --- FZF ----
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
