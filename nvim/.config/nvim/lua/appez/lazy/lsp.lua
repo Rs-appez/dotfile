@@ -11,13 +11,7 @@ return {
         require("lspconfig.health").check()
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = {
-                "lua_ls",
-                "angularls",
-                "bashls",
-                "html",
-                "ts_ls",
-            },
+            ensure_installed = {},
             handlers = {
                 function(server_name)
                     require("lspconfig")[server_name].setup({
@@ -34,6 +28,16 @@ return {
                 docker_compose_file = "docker-compose.yml",
                 docker_compose_service = "django",
             },
+        })
+        require("lspconfig").omnisharp.setup({
+            cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/OmniSharp") },
+            filetypes = { "cs" },
+            root_dir = function()
+                return vim.loop.cwd()
+            end,
+            enable_import_completion = true,
+            organize_imports_on_format = true,
+            enable_roslyn_analyzers = true,
         })
     end,
 }
