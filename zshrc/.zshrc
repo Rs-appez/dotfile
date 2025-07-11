@@ -195,4 +195,5 @@ alias tl="tmux -L"
 export ATAC_KEY_BINDINGS="~/.config/atac/key_bindings.toml"
 
 
+# spicetify
 export PATH=$PATH:/home/appez/.spicetify
