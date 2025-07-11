@@ -110,6 +110,7 @@ export DEFAULT_USER="appez"
 #myalias
 
 alias q="exit"
+alias shut="shutdown -h now"
 
 #python
 alias python="python3"
