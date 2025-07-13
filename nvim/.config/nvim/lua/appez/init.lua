@@ -1,5 +1,6 @@
 require("appez.remap")
 require("appez.set")
+require("appez.mapping_lang")
 require("appez.config.lazy")
 
 local autocmd = vim.api.nvim_create_autocmd

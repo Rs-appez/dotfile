@@ -24,12 +24,3 @@ vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
 vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
 vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
-
--- Python
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "python",
-	callback = function()
-		vim.keymap.set("n", "<leader>py", ":w<CR>:sp<CR>:term time python3 %<CR>")
-		vim.keymap.set("n", "<leader>lg", 'viw"lyoprint(""lpa : ", "lpa)')
-	end,
-})
