@@ -20,7 +20,14 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8
+-- keep cursor in the middle of the screen
+vim.api.nvim_create_autocmd("CursorMoved", {
+    pattern = "*",
+    callback = function()
+        vim.cmd("normal! zz")
+    end,
+})
+vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
