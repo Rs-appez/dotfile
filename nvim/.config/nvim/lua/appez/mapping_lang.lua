@@ -1,10 +1,13 @@
 -- run script
 local execute_mapping = "<leader>rs"
-local function execute_script(cmd)
-    if cmd == nil or cmd == "" then
-        cmd = "cat"
+local function execute_script(cmd, include_filename)
+    cmd = cmd or "cat"
+    include_filename = include_filename or true
+    local filename = ""
+    if include_filename then
+        filename = " %"
     end
-    return ":w<CR>:sp<CR>:term time " .. cmd .. " %<CR>"
+    return ":wa<CR>:sp<CR>:term time " .. cmd .. filename .. "<CR>"
 end
 
 -- log
@@ -33,8 +36,17 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "cs",
     callback = function()
-        vim.keymap.set("n", execute_mapping, ":wa<CR>:sp<CR>:term time dotnet run<CR>")
-        vim.keymap.set("n", log_mapping, 'viw"lyoConsole.WriteLine(""lpa : ", "lpa);'
+        vim.keymap.set("n", execute_mapping, execute_script("dotnet run", false))
+        vim.keymap.set("n", log_mapping, 'viw"lyoConsole.WriteLine(""lpa : " + "lpa);'
         )
+    end,
+})
+
+-- Rust
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "rust",
+    callback = function()
+        vim.keymap.set("n", execute_mapping, execute_script("cargo run", false))
+        vim.keymap.set("n", log_mapping, 'viw"lyoprintln!(""lpa : {}", "lpa);')
     end,
 })
