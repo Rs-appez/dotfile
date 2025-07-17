@@ -131,6 +131,7 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 #rust
 . "$HOME/.cargo/env"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 #go
 export PATH=$PATH:/usr/local/go/bin/
