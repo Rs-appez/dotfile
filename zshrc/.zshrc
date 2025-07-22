@@ -107,10 +107,14 @@ source $ZSH/oh-my-zsh.sh
 #
 export DEFAULT_USER="appez"
 
+export XDG_DATA_DIRS="/usr/local/share:/usr/share:/var/lib/flatpak/exports/share/applications"
+
 #myalias
 
 alias q="exit"
 alias shut="shutdown -h now"
+
+alias open="xdg-open"
 
 #python
 alias python="python3"
@@ -137,24 +141,24 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin/
 # --- FZF ----
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 # -- Use fd instead of fzf --
 
-export FZF_DEFAULT_COMMAND="fdfind --hidden --strip-cwd-prefix --exclude .git"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fdfind --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
-  fdfind --hidden --exclude .git . "$1"
+  fd --hidden --exclude .git . "$1"
 }
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  fdfind --type=d --hidden --exclude .git . "$1"
+  fd --type=d --hidden --exclude .git . "$1"
 }
 
 # zoxide
@@ -169,14 +173,7 @@ eval "$(pyenv init - zsh)"
 alias lg=lazygit
 
 # yazi
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
+alias y="yazi"
 
 #lazydocker
 alias lzd='lazydocker'
