@@ -109,6 +109,8 @@ export DEFAULT_USER="appez"
 
 export XDG_DATA_DIRS="/usr/local/share:/usr/share:/var/lib/flatpak/exports/share/applications"
 
+export PATH="$PATH:/$HOME/.local/bin"
+
 #myalias
 
 alias q="exit"
