@@ -2,7 +2,7 @@ default_profile = "appez"
 
 [profiles.appez]
 adapter = "sqlite"
-theme = "github-dark"
+theme = "tokyo-night"
 limit = 100000
 keymap_name = ["appez"]
 
