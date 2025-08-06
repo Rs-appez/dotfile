@@ -199,3 +199,11 @@ export PATH=$PATH:/home/appez/.spicetify
 
 # fx (json viewer)
 source <(fx --comp zsh)
+
+# my scripts
+export MY_SCRIPTS="$HOME/.my_zsh_scripts"
+for script in "$MY_SCRIPTS"/*.zsh; do
+  if [[ -f $script ]]; then
+    source "$script"
+  fi
+done
