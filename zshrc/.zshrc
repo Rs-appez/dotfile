@@ -128,7 +128,7 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 export EDITOR="nvim"
 alias n=nvim
 alias nt="nvim /tmp/tmp_editor"
-alias ncp="nt -S ~/.config/nvim/chatWithCopilot.lua"
+alias cco="nt -S ~/.config/nvim/chatWithCopilot.lua"
 
 #fly.io
 export FLYCTL_INSTALL="/home/appez/.fly"
