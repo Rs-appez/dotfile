@@ -50,3 +50,12 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.keymap.set("n", log_mapping, 'viw"lyoprintln!(""lpa : {}", "lpa);')
     end,
 })
+
+-- Go
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "go",
+    callback = function()
+        vim.keymap.set("n", execute_mapping, execute_script("go run"))
+        vim.keymap.set("n", log_mapping, 'viw"lyoprintln(""lpa : ", "lpa)')
+    end,
+})

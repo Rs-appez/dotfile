@@ -130,6 +130,7 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 export EDITOR="nvim"
 alias n=nvim
 alias nt="nvim /tmp/tmp_editor"
+alias cco="nt -S ~/.config/nvim/chatWithCopilot.lua"
 
 #fly.io
 export FLYCTL_INSTALL="/home/appez/.fly"
@@ -200,3 +201,11 @@ export PATH=$PATH:/home/appez/.spicetify
 
 # fx (json viewer)
 source <(fx --comp zsh)
+
+# my scripts
+export MY_SCRIPTS="$HOME/.my_zsh_scripts"
+for script in "$MY_SCRIPTS"/*.zsh; do
+  if [[ -f $script ]]; then
+    source "$script"
+  fi
+done
