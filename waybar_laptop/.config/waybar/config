@@ -10,13 +10,14 @@
         "sway/workspaces",
         "sway/mode",
         "sway/scratchpad",
-        "custom/media",
+        "custom/media"
     ],
     "modules-center": [
         "sway/window",
         "clock",
     ],
     "modules-right": [
+        // "mpd",
         //"idle_inhibitor",
         "pulseaudio",
         "network",
@@ -112,7 +113,24 @@
         "interval" : 1,
         "format": "{:%T}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "locale" : "en_GB.UTF-8",
+        //"format-alt": "{:%Y-%m-%d}"
+        "calendar" : {
+                "mode"          : "month",
+                "mode-mon-col"  : 3,
+                "weeks-pos"     : "right",
+                "on-scroll"     : 1,
+                "format": {
+                          "months":     "<span color='#ffead3'><b>{}</b></span>",
+                          "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                          "weeks":      "<span color='#99ffdd'><b></b></span>",
+                          "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                          "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                          }
+        },
+         "actions":  {
+                    "on-click-right": "mode",
+                    }
     },
     "cpu": {
         "format": "{usage}% ",
@@ -178,7 +196,7 @@
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
-        "format-source": "  {volume}% ",
+        "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
