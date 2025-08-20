@@ -1,6 +1,6 @@
 #!/bin/sh
 touch "${HOME}/.config/hypr/configs/${HOSTNAME}-idle.conf"
-# cat "${HOME}/.config/hypr/configs/base_idle.conf" "${HOME}/.config/hypr/configs/${HOSTNAME}-idle.conf" > "${HOME}/.config/hypr/configs/customs/idle.conf"
+ cat "${HOME}/.config/hypr/configs/base_idle.conf" "${HOME}/.config/hypr/configs/${HOSTNAME}-idle.conf" > "${HOME}/.config/hypr/configs/customs/idle.conf"
 
 
 touch "${HOME}/.config/hypr/configs/${HOSTNAME}-monitor.conf"
