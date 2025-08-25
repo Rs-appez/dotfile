@@ -3,10 +3,10 @@ return {
     {
         "CopilotC-Nvim/CopilotChat.nvim",
         dependencies = {
-            { "github/copilot.vim" },              -- or zbirenbaum/copilot.lua
+            { "github/copilot.vim" },                       -- or zbirenbaum/copilot.lua
             { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
         },
-        build = "make tiktoken",                   -- Only on MacOS or Linux
+        build = "make tiktoken",                            -- Only on MacOS or Linux
         opts = {
             -- See Configuration section for options
             -- lazy.nvim opts
@@ -50,6 +50,14 @@ return {
                 end,
                 desc = "Open CopilotChat",
             },
+            -- Select model
+            {
+                "<leader>ccm",
+                function()
+                    require("CopilotChat").select_model()
+                end,
+                desc = "CopilotChat - Select model",
+            }
         },
     },
 }
