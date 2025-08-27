@@ -22,6 +22,7 @@ return {
                         end,
                         cond = function()
                             return package.loaded["CopilotChat.config"] ~= nil
+                                and vim.bo.filetype == "copilot-chat"
                         end,
                         color = { fg = "#9063CD" },
                     },
@@ -33,7 +34,6 @@ return {
                         color = { fg = "#ff9e64" },
                     },
                 },
-
                 lualine_y = { "encoding", "fileformat", "filetype" },
                 lualine_z = { "location" },
             },
