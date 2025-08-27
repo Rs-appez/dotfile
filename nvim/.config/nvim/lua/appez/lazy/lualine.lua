@@ -14,6 +14,18 @@ return {
 
                 lualine_x = {
                     {
+                        function()
+                            local ok, cfg = pcall(require, "CopilotChat.config")
+                            if not ok or not cfg then return "" end
+                            local m = (cfg.options and cfg.options.model) or cfg.model or "?"
+                            return "󰚩  " .. m
+                        end,
+                        cond = function()
+                            return package.loaded["CopilotChat.config"] ~= nil
+                        end,
+                        color = { fg = "#9063CD" },
+                    },
+                    {
                         require("noice").api.statusline.mode.get,
                         cond = function()
                             return vim.fn.reg_recording() ~= ""
