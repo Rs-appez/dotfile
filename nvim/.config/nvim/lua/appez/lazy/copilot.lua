@@ -57,12 +57,15 @@ return {
                 end,
                 desc = "CopilotChat - Select model",
             },
+            -- Toggle Copilot AutoComplete
             {
                 "<leader>cct",
                 function()
                     vim.g.copilot_enabled = not vim.g.copilot_enabled
+                    vim.notify("Copilot AutoComplete: " .. (vim.g.copilot_enabled and "Enabled" or "Disabled"))
                 end,
                 desc = "Toggle Copilot AutoComplete",
+
             }
         }
     },
