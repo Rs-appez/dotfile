@@ -10,7 +10,7 @@ return {
                 null_ls.builtins.formatting.stylua,
                 null_ls.builtins.formatting.prettier,
                 null_ls.builtins.formatting.djlint,
-                null_ls.builtins.completion.spell,
+                -- null_ls.builtins.completion.spell,
             },
             on_attach = function(client, bufnr)
                 if client.supports_method("textDocument/formatting") then
