@@ -11,7 +11,7 @@ return {
             sections = {
                 lualine_a = { "mode" },
                 lualine_b = { "branch", "diff" },
-                lualine_c = { "filename" },
+                lualine_c = { "diagnostics", "filename" },
 
                 lualine_x = {
                     -- copilot model indicator
