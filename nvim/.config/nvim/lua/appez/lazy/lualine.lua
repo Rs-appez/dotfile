@@ -14,6 +14,7 @@ return {
                 lualine_c = { "filename" },
 
                 lualine_x = {
+                    -- copilot model indicator
                     {
                         lf.copilotModel,
                         cond = function()
@@ -22,6 +23,7 @@ return {
                         end,
                         color = { fg = "#9063CD" },
                     },
+                    -- display recording register
                     {
                         require("noice").api.statusline.mode.get,
                         cond = function()
@@ -31,6 +33,7 @@ return {
                     },
                 },
                 lualine_y = {
+                    -- visual selection lines and characters count
                     {
                         lf.selectionCount,
                         cond = function()
