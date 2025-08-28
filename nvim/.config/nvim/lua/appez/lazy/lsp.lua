@@ -39,5 +39,18 @@ return {
             organize_imports_on_format = true,
             enable_roslyn_analyzers = true,
         })
+        require("lspconfig").pylsp.setup({
+            cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/pylsp") },
+            filetypes = { "python" },
+            settings = {
+                pylsp = {
+                    plugins = {
+                        pycodestyle = {
+                            maxLineLength = 100,
+                        },
+                    },
+                },
+            },
+        })
     end,
 }
