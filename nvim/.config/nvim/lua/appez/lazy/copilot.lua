@@ -1,3 +1,4 @@
+vim.g.copilot_enabled = true
 return {
     { "github/copilot.vim" },
     {
