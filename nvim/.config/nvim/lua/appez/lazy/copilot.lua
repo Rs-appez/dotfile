@@ -1,4 +1,7 @@
 vim.g.copilot_enabled = true
+vim.keymap.set('i', '<C-J>', '<Plug>(copilot-accept-word)')
+vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-line)')
+
 return {
     { "github/copilot.vim" },
     {
