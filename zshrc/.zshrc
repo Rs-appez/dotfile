@@ -210,3 +210,6 @@ for script in "$MY_SCRIPTS"/*.zsh; do
     source "$script"
   fi
 done
+
+# Add .NET Core SDK tools
+export PATH="$PATH:/home/appez/.dotnet/tools"
