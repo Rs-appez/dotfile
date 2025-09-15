@@ -1,0 +1,27 @@
+@import "moccha.css";
+
+* {
+    /* reference the color by using @color-name */
+    color: @text;
+    font-family:
+        Mononoki nerd font,
+        "Font Awesome 7 Free",
+        sans-serif;
+    font-size: 17px;
+    min-height: 0;
+}
+
+window#waybar {
+    /* you can also GTK3 CSS functions! */
+    background-color: shade(@base, 0.9);
+    border: 2px solid alpha(@crust, 0.3);
+}
+
+label.module {
+    padding: 0 10px;
+    font-weight: 900;
+}
+
+#tray {
+    padding: 0 20px;
+}
