@@ -118,6 +118,10 @@ alias shut="shutdown -h now"
 
 alias open="xdg-open"
 
+#github cli
+
+alias gclone='gh repo list --limit 100 | fzf | awk '{print $1}' | xargs gh repo clone'
+
 #python
 alias python="python3"
 alias py="python3"
