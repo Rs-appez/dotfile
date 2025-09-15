@@ -120,7 +120,11 @@ alias open="xdg-open"
 
 #github cli
 
-alias gclone='gh repo list --limit 100 | fzf | awk '{print $1}' | xargs gh repo clone'
+gclone() {
+  gh repo list "${1:-Rs-appez}" --limit 20 | fzf | awk '{print $1}' | xargs gh repo clone
+}
+
+
 
 #python
 alias python="python3"
