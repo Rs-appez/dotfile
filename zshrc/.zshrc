@@ -117,6 +117,7 @@ alias q="exit"
 alias shut="shutdown -h now"
 
 alias open="xdg-open"
+alias trig="tree --gitignore --dirsfirst -C -L 2"
 
 #python
 alias python="python3"
