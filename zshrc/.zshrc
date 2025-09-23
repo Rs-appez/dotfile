@@ -214,3 +214,6 @@ done
 
 # Add .NET Core SDK tools
 export PATH="$PATH:/home/appez/.dotnet/tools"
+
+export PATH=$PATH:/sbin:/usr/sbin
+
