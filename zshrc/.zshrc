@@ -107,7 +107,7 @@ source $ZSH/oh-my-zsh.sh
 #
 export DEFAULT_USER="appez"
 
-export XDG_DATA_DIRS="/usr/local/share:/usr/share:/var/lib/flatpak/exports/share/applications"
+# export XDG_DATA_DIRS="/usr/local/share:/usr/share:/var/lib/flatpak/exports/share/applications"
 
 export PATH="$PATH:/$HOME/.local/bin"
 
