@@ -177,6 +177,9 @@ eval "$(pyenv init - zsh)"
 # lazygit
 alias lg=lazygit
 
+# lazysql
+alias lzs="lazysql"
+
 # yazi
 alias y="yazi"
 
