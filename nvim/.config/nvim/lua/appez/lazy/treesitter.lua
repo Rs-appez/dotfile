@@ -26,6 +26,7 @@ local M = {
 				"rust",
 				"sql",
 				"regex",
+                "razor",
 			},
 
 			-- Install parsers synchronously (only applied to `ensure_installed`)
