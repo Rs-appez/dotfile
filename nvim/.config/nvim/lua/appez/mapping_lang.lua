@@ -1,5 +1,6 @@
 -- run script
 local execute_mapping = "<leader>rs"
+
 local function execute_script(cmd, include_filename)
     cmd = cmd or "cat"
     include_filename = include_filename or true
@@ -15,11 +16,22 @@ local log_mapping = "<leader>lg"
 local log_macro_print = 'viw"lyoprint(""lpa : ", "lpa)'
 
 -- Python
+local function run_module()
+    local current_file = vim.fn.expand("%:p")
+    local cwd = vim.fn.getcwd()
+    local rel_path = current_file:sub(#cwd + 2):gsub("%.py$", ""):gsub("/", ".")
+    print("rel_path : ", rel_path)
+    if rel_path ~= "" then
+        return ":wa<CR>:sp<CR>:term time python3 -m " .. rel_path .. "<CR>"
+    end
+    return ":echo 'Cannot determine module name'<CR>"
+end
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
     callback = function()
         vim.keymap.set("n", execute_mapping, execute_script("python3"))
         vim.keymap.set("n", log_mapping, log_macro_print)
+        vim.keymap.set("n", "<leader>rm", run_module(), { desc = "Run current Python module" })
     end,
 })
 
