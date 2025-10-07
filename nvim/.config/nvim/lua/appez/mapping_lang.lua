@@ -29,8 +29,8 @@ end
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
     callback = function()
-        vim.keymap.set("n", execute_mapping, execute_script("python3"))
-        vim.keymap.set("n", log_mapping, log_macro_print)
+        vim.keymap.set("n", execute_mapping, execute_script("python3"), { desc = "Execute current Python script" })
+        vim.keymap.set("n", log_mapping, log_macro_print, { desc = "Insert print statement for variable under cursor" })
         vim.keymap.set("n", "<leader>rm", run_module(), { desc = "Run current Python module" })
     end,
 })
@@ -39,8 +39,8 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "lua",
     callback = function()
-        vim.keymap.set("n", execute_mapping, execute_script("lua"))
-        vim.keymap.set("n", log_mapping, log_macro_print)
+        vim.keymap.set("n", execute_mapping, execute_script("lua"), { desc = "Execute current Lua script" })
+        vim.keymap.set("n", log_mapping, log_macro_print , { desc = "Insert print statement for variable under cursor" })
     end,
 })
 
@@ -48,9 +48,9 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "cs",
     callback = function()
-        vim.keymap.set("n", execute_mapping, execute_script("dotnet run", false))
+        vim.keymap.set("n", execute_mapping, execute_script("dotnet run", false), { desc = "Execute current C# script" })
         vim.keymap.set("n", log_mapping, 'viw"lyoConsole.WriteLine(""lpa : " + "lpa);'
-        )
+        , { desc = "Insert Console.WriteLine statement for variable under cursor" })
     end,
 })
 
@@ -58,8 +58,8 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "rust",
     callback = function()
-        vim.keymap.set("n", execute_mapping, execute_script("cargo run", false))
-        vim.keymap.set("n", log_mapping, 'viw"lyoprintln!(""lpa : {}", "lpa);')
+        vim.keymap.set("n", execute_mapping, execute_script("cargo run", false), { desc = "Execute current Rust script" })
+        vim.keymap.set("n", log_mapping, 'viw"lyoprintln!(""lpa : {}", "lpa);', { desc = "Insert println! statement for variable under cursor" })
     end,
 })
 
@@ -67,7 +67,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "go",
     callback = function()
-        vim.keymap.set("n", execute_mapping, execute_script("go run"))
-        vim.keymap.set("n", log_mapping, 'viw"lyoprintln(""lpa : ", "lpa)')
+        vim.keymap.set("n", execute_mapping, execute_script("go run"), { desc = "Execute current Go script" })
+        vim.keymap.set("n", log_mapping, 'viw"lyoprintln(""lpa : ", "lpa)', { desc = "Insert println statement for variable under cursor" })
     end,
 })
