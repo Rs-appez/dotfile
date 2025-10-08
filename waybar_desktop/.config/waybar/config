@@ -116,7 +116,7 @@
     },
     "custom/kdeconnect_battery" :{
         "exec" : "$HOME/.config/waybar/scripts/kdeconnect_battery.sh",
-        "interval" : 60,
+        "interval" : 300,
         "return-type" : "json",
         "format": " {text}"
     }
