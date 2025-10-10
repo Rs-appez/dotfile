@@ -19,7 +19,7 @@ return {
             local builtin = require("telescope.builtin")
             vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
             vim.keymap.set("n", "<leader>en", function()
-                    builtin.find_files { cwd = "~/.config/nvim/" }
+                    builtin.find_files { cwd = vim.fn.stdpath("config") }
                 end,
                 { desc = "Telescope find nvim config" })
             vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
