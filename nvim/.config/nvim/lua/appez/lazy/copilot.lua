@@ -2,6 +2,24 @@ vim.g.copilot_enabled = true
 vim.keymap.set('i', '<C-J>', '<Plug>(copilot-accept-word)')
 vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-line)')
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "gitcommit",
+    callback = function()
+        vim.keymap.set("n", "<leader>ccc", function()
+            local commit_prompt = require("CopilotChat.config").prompts.Commit
+            require("CopilotChat").ask(commit_prompt.prompt, {
+                resources = commit_prompt.resources,
+                selection = require("CopilotChat.select").buffer,
+                callback = function(response)
+                    local res = response.content:gsub("^```[^\n]*\n?", ""):gsub("```$", "")
+                        or ""
+                    vim.api.nvim_buf_set_lines(vim.fn.bufnr('#'), 0, 0, false, vim.split(res, "\n"))
+                    require("CopilotChat").close()
+                end,
+            })
+        end, { buffer = true, desc = "Generate commit message with CopilotChat" })
+    end,
+})
 return {
     { "github/copilot.vim" },
     {
