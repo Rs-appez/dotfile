@@ -1,6 +1,7 @@
 {
     "diagnostics.globals": [
         "vim",
-        "autocmd"
+        "autocmd",
+        "Snacks"
     ]
 }
