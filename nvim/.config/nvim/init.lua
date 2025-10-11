@@ -1,3 +1,1 @@
 require("appez")
-
--- test
