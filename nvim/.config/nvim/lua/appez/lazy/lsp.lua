@@ -20,7 +20,6 @@ return {
     config = function()
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-        require("lspconfig.health").check()
         require("mason").setup({
             registries = {
                 "github:mason-org/mason-registry",
@@ -41,7 +40,8 @@ return {
                 end,
             },
         })
-        require("lspconfig").djlsp.setup({
+        vim.lsp.start({
+            name = "djlsp",
             cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/djlsp") },
             filetypes = { "htmldjango" },
             init_options = {
@@ -61,7 +61,8 @@ return {
         --     organize_imports_on_format = true,
         --     enable_roslyn_analyzers = true,
         -- })
-        require("lspconfig").pylsp.setup({
+        vim.lsp.start({
+            name = "pylsp",
             cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/pylsp") },
             filetypes = { "python" },
             settings = {
