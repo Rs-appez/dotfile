@@ -77,9 +77,4 @@ return
             end,
         })
     end,
-    require("telescope").setup({
-        defaults = {
-            file_ignore_patterns = { "%__virtual.html$" },
-        },
-    })
 }
