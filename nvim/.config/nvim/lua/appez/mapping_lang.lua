@@ -20,7 +20,6 @@ local function run_module()
     local current_file = vim.fn.expand("%:p")
     local cwd = vim.fn.getcwd()
     local rel_path = current_file:sub(#cwd + 2):gsub("%.py$", ""):gsub("/", ".")
-    print("rel_path : ", rel_path)
     if rel_path ~= "" then
         return ":wa<CR>:sp<CR>:term time python3 -m " .. rel_path .. "<CR>"
     end
