@@ -11,7 +11,7 @@ return {
             --     ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
             -- },
             progress = {
-                enabled = true, -- disable because of roslyn
+                enabled = false, -- disable because of roslyn
             },
         },
     },
