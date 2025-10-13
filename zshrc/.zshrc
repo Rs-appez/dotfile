@@ -217,3 +217,6 @@ done
 
 # Add .NET Core SDK tools
 export PATH="$PATH:/home/appez/.dotnet/tools"
+
+# Flutter
+#source <(flutter bash-completion)
