@@ -52,6 +52,7 @@ return {
                         require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
                     end
                 end,
+                mode = { "n", "v" },
                 desc = "CopilotChat - Quick chat",
             },
 
