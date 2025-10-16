@@ -130,7 +130,6 @@ source <(ng completion script)
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export EDITOR="nvim"
 alias n=nvim
-alias nt="nvim /tmp/tmp_editor.txt"
 alias cco="nt -S ~/.config/nvim/chatWithCopilot.lua"
 
 #fly.io
