@@ -29,6 +29,7 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
     callback = function()
         vim.keymap.set("n", execute_mapping, execute_script("python3"), { desc = "Execute current Python script" })
+        vim.keymap.set("v", log_mapping, 'yoprint("" : ",")', { desc = "Insert print statement for selected variable" })
         vim.keymap.set("n", log_mapping, log_macro_print, { desc = "Insert print statement for variable under cursor" })
         vim.keymap.set("n", "<leader>rm", run_module(), { desc = "Run current Python module" })
     end,
