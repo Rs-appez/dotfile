@@ -70,3 +70,12 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.keymap.set("n", log_mapping, 'viw"lyoprintln(""lpa : ", "lpa)', { desc = "Insert println statement for variable under cursor" })
     end,
 })
+
+--JavaScript/TypeScript
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "javascript", "typescript" },
+    callback = function()
+        vim.keymap.set("n", execute_mapping, execute_script("node"), { desc = "Execute current JavaScript/TypeScript script" })
+        vim.keymap.set("n", log_mapping, 'viw"lyoconsole.log(""lpa : ", "lpa);', { desc = "Insert console.log statement for variable under cursor" })
+    end,
+})
