@@ -9,6 +9,7 @@ return {
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
+            "brenoprata10/nvim-highlight-colors",
 		},
 	},
 	-- nvim-cmp
@@ -39,6 +40,9 @@ return {
 				}, {
 					{ name = "buffer" },
 				}),
+                formatting = {
+                    format = require("nvim-highlight-colors").format
+                }
 			})
 		end,
 	},
