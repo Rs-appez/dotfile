@@ -1,0 +1,11 @@
+#image
+allow_images=true
+image_size=16
+
+#halign=center
+width=10%
+
+#keys
+key_up=Ctrl-k
+key_down=Ctrl-j
+key_expand=Ctrl-l
