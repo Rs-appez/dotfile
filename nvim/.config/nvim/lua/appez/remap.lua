@@ -18,8 +18,9 @@ vim.keymap.set("n", "<leader>P", [["+p]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
--- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
--- vim.keymap.set("v", "<leader>s", [[:s/\%V<C-r><C-w>\>\%V/<C-r><C-w>/g<Left><Left>]])
+vim.keymap.set("n", "<leader>rr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>]], { desc = "Replace word under cursor" })
+vim.keymap.set("v", "<leader>rr", [[:s/\%V<C-r><C-w>/<C-r><C-w>/g<Left><Left>]],
+    { desc = "Replace word under cursor in visual selection" })
 
 -- Navigate vim panes better
 vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
