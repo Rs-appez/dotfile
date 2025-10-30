@@ -22,6 +22,9 @@ vim.keymap.set("n", "<leader>rr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>]
 -- vim.keymap.set("v", "<leader>rr", [[:s/\%V<C-r><C-w>/<C-r><C-w>/g<Left><Left>]],
 --     { desc = "Replace word under cursor in visual selection" })
 
+-- Go next capitalized word
+vim.keymap.set("n", "<leader>cw", [[/\<[A-Z]\w*\><CR>]] , { desc = "Go to next capitalized word" })
+
 -- Navigate vim panes better
 vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
 vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
