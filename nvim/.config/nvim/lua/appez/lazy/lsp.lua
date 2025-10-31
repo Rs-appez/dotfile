@@ -61,19 +61,34 @@ return {
         --     organize_imports_on_format = true,
         --     enable_roslyn_analyzers = true,
         -- })
-        vim.lsp.start({
-            name = "pylsp",
-            cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/pylsp") },
-            filetypes = { "python" },
-            settings = {
-                pylsp = {
-                    plugins = {
-                        pycodestyle = {
-                            maxLineLength = 100,
-                        },
-                    },
-                },
-            },
-        })
+        -- vim.lsp.start({
+        --     name = "pylsp",
+        --     cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/pylsp") },
+        --     filetypes = { "python" },
+        --     settings = {
+        --         pylsp = {
+        --             plugins = {
+        --                 pycodestyle = {
+        --                     maxLineLength = 100,
+        --                 },
+        --             },
+        --         },
+        --     },
+        -- })
+        -- vim.lsp.start({
+        --     name = "pyright",
+        --     cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/pyright-langserver"), "--stdio" },
+        --     filetypes = { "python" },
+        --     settings = {
+        --         python = {
+        --             analysis = {
+        --                 autoSearchPaths = true,
+        --                 diagnosticMode = "workspace",
+        --                 useLibraryCodeForTypes = true
+        --             }
+        --         }
+        --     }
+        --
+        -- })
     end,
 }
