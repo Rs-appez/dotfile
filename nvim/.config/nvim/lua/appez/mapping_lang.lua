@@ -85,3 +85,48 @@ vim.api.nvim_create_autocmd("FileType", {
             { desc = "Insert console.log statement for variable under cursor" })
     end,
 })
+
+-- Angular
+local function generate_ng_file()
+    local target_dir = vim.fn.getcwd() .. "/src/app"
+    local old_dir = vim.fn.getcwd()
+    vim.cmd('lcd ' .. target_dir)
+
+    vim.schedule(function()
+        vim.ui.input({
+            prompt = "Enter path for Angular file (relative to src/app): ",
+            completion = "file"
+        }, function(path)
+            if not path or path == "" then
+                print("Invalid path")
+                vim.cmd('lcd ' .. old_dir)
+                return
+            end
+            vim.ui.input({
+                prompt = "Enter type (component/service/module/directive/pipe): ",
+                completion = "none"
+            }, function(type)
+                vim.cmd('lcd ' .. old_dir)
+                if not type or type == "" then
+                    print("Invalid type")
+                    return
+                end
+                local cmd = "ng generate " .. type .. " " .. path
+                local result = vim.fn.system(cmd)
+                if vim.v.shell_error == 0 then
+                    print("Angular file generated: " .. path)
+                else
+                    print("Error: " .. result)
+                end
+            end)
+        end)
+    end)
+end
+if vim.fn.filereadable(vim.fn.getcwd() .. "/angular.json") == 1 then
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = {},
+        callback = function()
+            vim.keymap.set("n", "<leader>ng", generate_ng_file, { desc = "Generate Angular Component/Service/Module..." })
+        end,
+    })
+end
