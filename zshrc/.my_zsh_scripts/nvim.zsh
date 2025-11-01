@@ -8,3 +8,13 @@ nt(){
     fi
     rm -f /tmp/tmp_editor.*(N)
 }
+
+n(){
+    if [ -z "$1" ]; then
+        nvim .
+    elif [[ $1 == -* ]]; then
+        nvim . "$@"
+    else
+        nvim "$1"
+    fi
+}
