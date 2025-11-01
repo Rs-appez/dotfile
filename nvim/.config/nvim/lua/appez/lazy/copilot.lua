@@ -5,7 +5,7 @@ vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-line)')
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "gitcommit",
     callback = function()
-        vim.keymap.set("n", "<leader>ccc", function()
+        vim.keymap.set("n", "<leader>c", function()
             local commit_prompt = require("CopilotChat.config").prompts.Commit
             require("CopilotChat").ask(commit_prompt.prompt, {
                 resources = commit_prompt.resources,
