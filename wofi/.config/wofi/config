@@ -3,7 +3,7 @@ allow_images=true
 image_size=16
 
 #halign=center
-width=10%
+width=20%
 
 #keys
 key_up=Ctrl-k
