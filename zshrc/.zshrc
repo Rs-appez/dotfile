@@ -197,7 +197,6 @@ alias icat="kitty +kitten icat --align=left"
 alias ta="tmux attach"
 alias tls="tmux ls"
 alias tk="tmux kill-session -t"
-alias tn="tmux new -s"
 alias tat="tmux attach -t"
 alias tl="tmux -L"
 
