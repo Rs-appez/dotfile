@@ -115,6 +115,25 @@ local function generate_ng_file()
                 local result = vim.fn.system(cmd)
                 if vim.v.shell_error == 0 then
                     print("Angular file generated: " .. path)
+                    local ts_file
+                    local dir_to_handle = vim.loop.fs_scandir(target_dir .. "/" .. path)
+                    if not dir_to_handle then
+                        print("Could not open directory to find generated file.")
+                        return
+                    end
+                    while true do
+                        local name, _ = vim.loop.fs_scandir_next(dir_to_handle)
+                        if not name then break end
+                        if name:match("%.ts$") and not name:match("%.spec%.ts$") then
+                            ts_file = name
+                            break
+                        end
+                    end
+                    if ts_file then
+                        vim.cmd("edit " .. target_dir .. "/" .. path .. "/" .. ts_file)
+                    else
+                        print("Could not find generated TypeScript file.")
+                    end
                 else
                     print("Error: " .. result)
                 end
