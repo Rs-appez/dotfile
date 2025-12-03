@@ -221,6 +221,7 @@ done
 
 # Add .NET Core SDK tools
 export PATH="$PATH:/home/appez/.dotnet/tools"
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # Flutter
 #source <(flutter bash-completion)
