@@ -111,6 +111,8 @@ export DEFAULT_USER="appez"
 
 export PATH="$PATH:/$HOME/.local/bin"
 
+export PATH="$PATH:$HOME/.yarn/bin"
+
 #myalias
 
 alias q="exit"
