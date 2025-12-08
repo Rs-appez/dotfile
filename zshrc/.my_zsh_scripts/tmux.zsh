@@ -22,7 +22,7 @@ tn(){
 
 }
 
-tnt(){
+t(){
     if [ -z "$1" ]; then
         name=$(basename "$PWD")
         if [[ "${name:0:1}" == "." ]]; then
