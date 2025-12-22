@@ -1,3 +1,4 @@
 nvim/.config/nvim/lazy-lock.json
 ohmyzsh/.oh-my-zsh
 tmux/.config/tmux/plugins
+atac/.config/atac/atac.log
