@@ -99,6 +99,7 @@ source $ZSH/oh-my-zsh.sh
 # the $ZSH_CUSTOM folder, with .zsh extension. Examples:
 # - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
+setopt HIST_IGNORE_DUPS
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
