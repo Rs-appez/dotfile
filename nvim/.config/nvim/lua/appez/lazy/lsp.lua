@@ -46,7 +46,7 @@ return {
             filetypes = { "htmldjango" },
             init_options = {
                 django_settings_module = "",
-                docker_compose_file = "docker-compose.yml",
+                -- docker_compose_file = "docker-compose.yml",
                 docker_compose_service = "django",
             },
         })
