@@ -109,7 +109,8 @@ setopt HIST_IGNORE_DUPS
 export DEFAULT_USER="appez"
 
 # export XDG_DATA_DIRS="/usr/local/share:/usr/share:/var/lib/flatpak/exports/share/applications"
-
+#
+export SUDO_ASKPASS="$HOME/.local/bin/sudo-askpass.sh"
 export PATH="$PATH:/$HOME/.local/bin"
 
 export PATH="$PATH:$HOME/.yarn/bin"
