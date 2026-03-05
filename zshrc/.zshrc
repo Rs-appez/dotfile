@@ -123,6 +123,10 @@ alias shut="shutdown -h now"
 alias open="xdg-open"
 alias trig="tree --gitignore --dirsfirst -C -L 2"
 
+# homelab
+alias -g serv="server.appez.cafe"
+alias -g nas="ns.appez.cafe"
+
 #python
 alias python="python3"
 alias py="python3"
