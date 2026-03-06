@@ -126,6 +126,7 @@ alias trig="tree --gitignore --dirsfirst -C -L 2"
 # homelab
 alias -g serv="server.appez.cafe"
 alias -g nas="ns.appez.cafe"
+alias -g desk="desktop.appez.cafe"
 
 #python
 alias python="python3"
