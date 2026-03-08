@@ -9,6 +9,7 @@
     // Choose the order of the modules
     "modules-left": [
         "cpu",
+        "custom/gpu",
         "memory",
         "temperature",
         "custom/kdeconnect_battery",
@@ -62,6 +63,12 @@
     "cpu": {
         "format": "{usage}% ",
         "tooltip": true
+    },
+    "custom/gpu": {
+        "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
+        "format": "{}% 󰢮",
+        "interval": 2,
+        "tooltip": false
     },
     "memory": {
         "format": "{}% "
