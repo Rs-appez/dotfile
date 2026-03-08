@@ -1,64 +1,48 @@
-// -*- mode: jsonc -*-
 {
-    // "layer": "top", // Waybar at top layer
-        "output": "DP-3",
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
+    "output": "DP-3",
+    "height": 30,
+    "spacing": 4,
     "modules-left": [
         "cpu",
         "custom/gpu",
         "memory",
         "temperature",
-        "custom/kdeconnect_battery",
+        "custom/kdeconnect_battery"
     ],
     "modules-center": [
         "sway/window",
-        "clock",
+        "clock"
     ],
     "modules-right": [
-        // "mpd",
-        //"idle_inhibitor",
         "pulseaudio",
         "network",
         "backlight",
- //       "keyboard-state",
-  //      "sway/language",
-   //     "battery#bat2",
-        "tray",
+        "tray"
     ],
     "tray": {
-        // "icon-size": 21,
-        "spacing": 10,
-        // "icons": {
-        //   "blueman": "bluetooth",
-        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-        // }
+        "spacing": 10
     },
     "clock": {
-        "interval" : 1,
+        "interval": 1,
         "format": "{:%T}",
         "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-        "locale" : "en_GB.UTF-8",
-        //"format-alt": "{:%Y-%m-%d}"
-        "calendar" : {
-                "mode"          : "month",
-                "mode-mon-col"  : 3,
-                "weeks-pos"     : "right",
-                "on-scroll"     : 1,
-                "format": {
-                          "months":     "<span color='#ffead3'><b>{}</b></span>",
-                          "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                          "weeks":      "<span color='#99ffdd'><b></b></span>",
-                          "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                          "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-                          }
+        "locale": "en_GB.UTF-8",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b></b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
         },
-         "actions":  {
-                    "on-click-right": "mode",
-                    }
+        "actions": {
+            "on-click-right": "mode"
+        }
     },
     "cpu": {
         "format": "{usage}% ",
@@ -76,9 +60,12 @@
     "temperature": {
         "hwmon-path": "/sys/class/thermal/thermal_zone1/temp",
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
     },
     "network": {
         "format-wifi": "{essid} ",
@@ -89,7 +76,6 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
@@ -103,7 +89,11 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol"
     },
@@ -119,10 +109,10 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-    "custom/kdeconnect_battery" :{
-        "exec" : "$HOME/.config/waybar/scripts/kdeconnect_battery.sh",
-        "interval" : 300,
-        "return-type" : "json",
+    "custom/kdeconnect_battery": {
+        "exec": "$HOME/.config/waybar/scripts/kdeconnect_battery.sh",
+        "interval": 300,
+        "return-type": "json",
         "format": " {text}"
     }
-}   
+}
