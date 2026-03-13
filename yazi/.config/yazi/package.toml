@@ -10,8 +10,8 @@ hash = "6b8e5d6b09626facec713923d3ddb54b"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "d7588f6"
-hash = "63b6c222bf2103b3023389dde5e2ecfe"
+rev = "1962818"
+hash = "26db011a778f261d730d4f5f8bf24b3f"
 
 [flavor]
 deps = []
