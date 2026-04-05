@@ -20,7 +20,8 @@ return {
             notification = {
                 -- wo = { wrap = true } -- Wrap notifications
             }
-        }
+        },
+        gh = {}
     },
     keys = {
         -- Top Pickers & Explorer
@@ -42,6 +43,11 @@ return {
         { "<leader>gs",      function() Snacks.picker.git_status() end,                              desc = "Git Status" },
         { "<leader>gS",      function() Snacks.picker.git_stash() end,                               desc = "Git Stash" },
         { "<leader>gd",      function() Snacks.picker.git_diff() end,                                desc = "Git Diff (Hunks)" },
+        -- github
+        { "<leader>gi", function() Snacks.picker.gh_issue() end, desc = "GitHub Issues (open)" },
+        { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
+        { "<leader>gp", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests (open)" },
+        { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "GitHub Pull Requests (all)" },
         -- Grep
         { "<leader>/",       function() Snacks.picker.grep() end,                                    desc = "Grep" },
         { "<leader>sb",      function() Snacks.picker.lines() end,                                   desc = "Buffer Lines" },
