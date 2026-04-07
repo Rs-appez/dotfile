@@ -1,23 +1,14 @@
-local autocmd = vim.api.nvim_create_autocmd
-
-local augroup = vim.api.nvim_create_augroup
-local AppezGroup = augroup("AppezGroup", {})
-
-autocmd("LspAttach", {
-	group = AppezGroup,
-	callback = function(e)
-		local opts = { buffer = e.buf }
-		vim.keymap.set("n", "<leader>vd", function()
-			vim.diagnostic.open_float()
-		end, opts)
-		vim.keymap.set({"n","v"}, "<leader>vca", function()
-			vim.lsp.buf.code_action()
-		end, opts)
-		vim.keymap.set("n", "<leader>vrn", function()
-			vim.lsp.buf.rename()
-		end, opts)
-		vim.keymap.set("i", "<C-h>", function()
-			vim.lsp.buf.signature_help()
-		end, opts)
-	end,
+-- LSP autocmds
+local on_attach = require("appez.utils.lsp").on_attach
+local lsp_on_attach_group = vim.api.nvim_create_augroup("LspMappings", {})
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = lsp_on_attach_group,
+    callback = on_attach,
+})
+-- Format on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    vim.lsp.buf.format({ async = false })
+  end,
 })
