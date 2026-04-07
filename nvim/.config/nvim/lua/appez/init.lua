@@ -1,5 +1,4 @@
 require("appez.config.lazy")
 require("appez.config.keymaps")
 require("appez.config.options")
-require("appez.config.autocmds")
 require("appez.utils.mapping_lang")
