@@ -21,6 +21,33 @@ return {
         })
 
         vim.lsp.enable(servers)
+
+        -- LSP keybindings on attach
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("lsp-keymaps", { clear = true }),
+            callback = function(event)
+                local client = vim.lsp.get_client_by_id(event.data.client_id)
+                if not client then
+                    return
+                end
+                local bufnr = event.buf
+                local opts = { noremap = true, silent = true, buffer = bufnr, desc = "Organize Imports" }
+
+                -- Order Imports (if supported by the client LSP)
+                if client:supports_method("textDocument/codeAction", bufnr) then
+                    vim.keymap.set("n", "<leader>oi", function()
+                        vim.lsp.buf.code_action({
+                            context = {
+                                only = { "source.organizeImports" },
+                                diagnostics = {},
+                            },
+                            apply = true,
+                            bufnr = bufnr,
+                        })
+                    end, opts)
+                end
+            end,
+        })
     end,
 
 }
