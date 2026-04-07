@@ -23,6 +23,7 @@ return {
             hcl = { "hclfmt" },
             sh = { "beautysh" },
             zsh = { "beautysh" },
+            lua = { "stylua" },
         },
         format_on_save = {
             timeout_ms = 500,

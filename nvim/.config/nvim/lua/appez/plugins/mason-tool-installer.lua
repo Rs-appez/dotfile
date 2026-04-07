@@ -7,6 +7,7 @@ return {
             "djlint",
             "hclfmt",
             "beautysh",
+            "stylua",
         },
     },
 }
