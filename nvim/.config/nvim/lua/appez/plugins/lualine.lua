@@ -2,7 +2,7 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-        local lf = require("appez.lualine_functions")
+        local lf = require("appez.utils.lualine_functions")
         require("lualine").setup({
             options = {
                 section_separators = { left = "", right = "" },
