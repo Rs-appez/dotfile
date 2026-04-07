@@ -1,7 +1,0 @@
---- @param capabilities table LSP client capabilities (typically from nvim-cmp or similar)
---- @return nil
-return function(capabilities)
-    vim.lsp.config('docker-language-server', {
-        capabilities = capabilities,
-    })
-end
