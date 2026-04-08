@@ -112,6 +112,8 @@ export DEFAULT_USER="appez"
 #
 export SUDO_ASKPASS="$HOME/.local/bin/sudo-askpass"
 export PATH="$PATH:/$HOME/.local/bin"
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
 
 export PATH="$PATH:$HOME/.yarn/bin"
 
