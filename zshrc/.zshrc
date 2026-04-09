@@ -112,8 +112,6 @@ export DEFAULT_USER="appez"
 #
 export SUDO_ASKPASS="$HOME/.local/bin/sudo-askpass"
 export PATH="$PATH:/$HOME/.local/bin"
-fpath+=~/.zfunc
-autoload -Uz compinit && compinit
 
 export PATH="$PATH:$HOME/.yarn/bin"
 
@@ -177,6 +175,9 @@ _fzf_compgen_dir() {
 
 # zoxide
 eval "$(zoxide init zsh)"
+
+# uv
+eval "$(uv generate-shell-completion zsh)"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
