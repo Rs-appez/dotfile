@@ -9,6 +9,7 @@ return {
 					reportUnknownMemberType = false,
 					reportUnknownParameterType = false,
 					reportUnknownLambdaType = false,
+					reportAny = false,
 				},
 			},
 		},
