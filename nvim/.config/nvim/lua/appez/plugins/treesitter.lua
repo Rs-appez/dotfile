@@ -26,7 +26,7 @@ local M = {
 				"rust",
 				"sql",
 				"regex",
-                "razor",
+				"razor",
 			},
 
 			-- Install parsers synchronously (only applied to `ensure_installed`)
@@ -56,4 +56,8 @@ local M = {
 	end,
 }
 
-return { M }
+return {
+	"nvim-treesitter/nvim-treesitter",
+	lazy = false,
+	build = ":TSUpdate",
+}
