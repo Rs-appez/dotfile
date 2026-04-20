@@ -22,9 +22,9 @@
         "pulseaudio",
         "network",
         "backlight",
- //       "keyboard-state",
-  //      "sway/language",
-   //     "battery#bat2",
+        //       "keyboard-state",
+        //      "sway/language",
+        //     "battery#bat2",
         "tray",
     ],
     "tray": {
@@ -36,27 +36,27 @@
         // }
     },
     "clock": {
-        "interval" : 1,
+        "interval": 1,
         "format": "{:%T}",
         "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-        "locale" : "en_GB.UTF-8",
+        "locale": "en_GB.UTF-8",
         //"format-alt": "{:%Y-%m-%d}"
-        "calendar" : {
-                "mode"          : "month",
-                "mode-mon-col"  : 3,
-                "weeks-pos"     : "right",
-                "on-scroll"     : 1,
-                "format": {
-                          "months":     "<span color='#ffead3'><b>{}</b></span>",
-                          "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                          "weeks":      "<span color='#99ffdd'><b></b></span>",
-                          "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                          "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-                          }
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b></b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
         },
-         "actions":  {
-                    "on-click-right": "mode",
-                    }
+        "actions": {
+            "on-click-right": "mode",
+        }
     },
     "cpu": {
         "format": "{usage}% ",
@@ -71,12 +71,26 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
     },
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "battery": {
         "states": {
@@ -91,18 +105,24 @@
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -122,13 +142,17 @@
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
+            "headphone": " ",
             "hands-free": "",
-            "headset": "",
+            "headset": " ",
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol"
     },
@@ -144,4 +168,4 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-}   
+}
