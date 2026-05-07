@@ -26,6 +26,14 @@ return {
 			zsh = { "beautysh" },
 			lua = { "stylua" },
 			go = { "gofmt" },
+			sql = { "pgformatter" },
+		},
+		formatters = {
+			pgformatter = {
+				command = "pg_format",
+				args = { "-" },
+				stdin = true,
+			},
 		},
 		format_on_save = {
 			timeout_ms = 500,
