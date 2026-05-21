@@ -1,11 +1,15 @@
 # git
 
 [[plugin.prepend_fetchers]]
-id   = "git"
+id = "git"
 name = "*"
-run  = "git"
+mime = "*"
+group = "git"
+run = "git"
 
 [[plugin.prepend_fetchers]]
-id   = "git"
+id = "git"
+mime = "*/*"
 name = "*/"
-run  = "git"
+group = "git"
+run = "git"
