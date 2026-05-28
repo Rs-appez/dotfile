@@ -100,6 +100,7 @@ source $ZSH/oh-my-zsh.sh
 # - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
 setopt HIST_IGNORE_DUPS
+bindkey -v
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
