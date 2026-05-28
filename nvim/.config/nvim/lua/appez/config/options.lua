@@ -32,4 +32,4 @@ vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 vim.opt.autoread = true
 
-vim.g.terminal_emulator = 'xterm-ghostty'
+vim.g.terminal_emulator = "xterm-ghostty"
