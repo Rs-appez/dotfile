@@ -101,6 +101,10 @@ source $ZSH/oh-my-zsh.sh
 # - $ZSH_CUSTOM/macos.zsh
 setopt HIST_IGNORE_DUPS
 bindkey -v
+export KEYTIMEOUT=1
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
