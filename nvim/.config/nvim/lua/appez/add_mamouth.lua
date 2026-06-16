@@ -1,5 +1,16 @@
+local providers = require("CopilotChat.config.providers")
+local copilot_provider = providers.copilot
+
 require("CopilotChat.config").providers.mammouth = {
-	prepare_input = require("CopilotChat.config.providers").copilot.prepare_input,
+	prepare_input = function(...) -- forward all args to avoid arity mismatch
+		local body = copilot_provider.prepare_input(...)
+		-- Some Mammouth/Anthropic models reject requests that include both `temperature` and `top_p`.
+		-- If both are present, prefer `temperature` and drop `top_p`.
+		if type(body) == "table" and body.temperature ~= nil and body.top_p ~= nil then
+			body.top_p = nil
+		end
+		return body
+	end,
 	prepare_output = require("CopilotChat.config.providers").copilot.prepare_output,
 
 	get_url = function(opts)
