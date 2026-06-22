@@ -24,6 +24,9 @@ require("CopilotChat.config").providers.mammouth = {
 		}
 	end,
 	get_models = function(headers)
+		if require("CopilotChat.config").providers.mammouth._models_cache then
+			return require("CopilotChat.config").providers.mammouth._models_cache
+		end
 		local response, err = require("CopilotChat.utils.curl").get("https://api.mammouth.ai/v1/models", {
 			headers = headers,
 			json_response = true,
@@ -31,7 +34,7 @@ require("CopilotChat.config").providers.mammouth = {
 		if err then
 			error(err)
 		end
-		return vim.iter(response.body.data)
+		local models = vim.iter(response.body.data)
 			:filter(function(model)
 				local exclude_patterns = {
 					"audio",
@@ -60,5 +63,7 @@ require("CopilotChat.config").providers.mammouth = {
 				}
 			end)
 			:totable()
+		require("CopilotChat.config").providers.mammouth._models_cache = models
+		return models
 	end,
 }
