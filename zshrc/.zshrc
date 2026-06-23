@@ -183,7 +183,7 @@ eval "$(zoxide init zsh)"
 
 # uv
 eval "$(uv generate-shell-completion zsh)"
-alias uvr="uv run python"
+alias uvr="uv run"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
