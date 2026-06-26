@@ -6,8 +6,6 @@ local function generate_commit_message(model)
 	end
 	local git_diff = diff_obj.stdout
 
-	-- local model = "llama3.1"
-	-- local model = "qwen2.5-coder:1.5b"
 	local system_prompt =
 		[[You are an expert developer assistant. Your sole task is to analyze the provided git diff and write a concise commit message.
 
@@ -92,7 +90,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "gitcommit",
 	callback = function()
 		vim.keymap.set("n", "<leader>bc", function()
-			local model = "llama3.1"
+			local model = "qwen2.5-coder:7b"
 			generate_commit_message(model)
 		end, { buffer = true, desc = "Generate commit message with CopilotChat" })
 	end,
