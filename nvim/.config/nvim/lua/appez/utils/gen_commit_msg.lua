@@ -21,7 +21,9 @@ STRICT RULES:
 		prompt = git_diff,
 		stream = false,
 		options = {
-			temperature = 0.1, -- keeps the output highly structured and disciplined
+			temperature = 0 - 0.2, -- keeps the output highly structured and disciplined
+			top_p = 0.9, -- allows for some creativity while still being focused
+			max_tokens = 256, -- limit the length of the commit message
 		},
 	})
 
