@@ -27,6 +27,7 @@ return {
 			lua = { "stylua" },
 			go = { "gofmt" },
 			sql = { "pgformatter" },
+			rust = { "rustfmt" },
 		},
 		formatters = {
 			pgformatter = {
