@@ -143,8 +143,8 @@ STRICT RULES:
 end
 
 local models = {
-	{ key = "<leader>c", model = "qwen2.5-coder:1.5b", desc = "Generate commit (fast)" },
-	{ key = "<leader>bc", model = "qwen2.5-coder:7b", desc = "Generate commit (big)" },
+	{ key = "<leader>c", model = "qwen2.5-coder:7b", desc = "Generate commit (fast)" },
+	{ key = "<leader>bc", model = "gemma4:e4b", desc = "Generate commit (big)" },
 }
 
 vim.api.nvim_create_autocmd("FileType", {
