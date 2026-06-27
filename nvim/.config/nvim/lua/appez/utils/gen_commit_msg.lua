@@ -55,13 +55,25 @@ local function generate_commit_message(model)
 		return
 	end
 
-	local system_prompt = [[Your only task is to analyze the provided git diff and output a concise
-    Conventional Commit message.
+	local system_prompt = [[You analyze a provided git diff and output exactly one Conventional Commit message.
 
-If the diff includes multiple logical changes, behavioral changes, migrations,
-or non-obvious reasoning, add a body after a blank line, wrapped at 72
-characters. Focus on WHY the change was made, not just WHAT changed.
-]]
+STRICT RULES:
+1. Output ONLY the raw commit message.
+2. Do NOT use markdown, bullets, lists, backticks, headings, bold text, explanations, or code blocks.
+3. The first line MUST match this exact format:
+   <type>(<scope>): <description>
+4. Allowed types are:
+   feat, fix, refactor, perf, docs, test, chore, ci, build, style
+5. The scope is REQUIRED and must be a short lowercase noun inferred from the diff.
+6. If no clear scope exists, use "general".
+7. The description must be lowercase, imperative mood, under 50 characters, and have no ending period.
+8. For simple changes, output only the first line.
+9. For complex changes, add a plain text body after one blank line.
+10. The body must be wrapped at 72 characters.
+11. The body must explain WHY the change was made, not just WHAT changed.
+12. If the diff introduces a breaking change, add "!" before the colon:
+    <type>(<scope>)!: <description>
+    and include a BREAKING CHANGE: footer.]]
 
 	local payload = vim.json.encode({
 		model = model,
