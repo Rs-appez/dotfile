@@ -1,29 +1,79 @@
+local is_generating = false
+
+local MAX_DIFF_CHARS = 24000
+
+local EXCLUDED_PATTERNS = {
+	":!package-lock.json",
+	":!pnpm-lock.yaml",
+	":!*.lock",
+	":!*.sum",
+}
+
+local function get_staged_diff()
+	-- Get diff excluding lock files
+	local args = { "git", "diff", "--cached", "-U2", "--" }
+	vim.list_extend(args, EXCLUDED_PATTERNS)
+
+	local diff_obj = vim.system(args, { text = true }):wait()
+	if diff_obj.code ~= 0 then
+		return nil
+	end
+
+	local diff = diff_obj.stdout
+
+	-- If empty (only lock files were staged), use stat summary
+	if diff == "" then
+		local stat = vim.system({ "git", "diff", "--cached", "--stat" }, { text = true }):wait().stdout or ""
+
+		if stat == "" then
+			return nil -- truly nothing staged
+		end
+
+		vim.notify("Only lock/generated files staged — using stat summary.", vim.log.levels.WARN)
+		return "Only dependency/lock files changed:\n" .. stat
+	end
+
+	-- Truncate if still too large
+	if #diff > MAX_DIFF_CHARS then
+		local stat = vim.system({ "git", "diff", "--cached", "--stat" }, { text = true }):wait().stdout or ""
+		diff = "Overview:\n" .. stat .. "\n\nTruncated diff:\n" .. diff:sub(1, MAX_DIFF_CHARS)
+		vim.notify("Diff truncated.", vim.log.levels.WARN)
+	end
+
+	return diff
+end
+
 local function generate_commit_message(model)
-	local diff_obj = vim.system({ "git", "diff", "--cached" }, { text = true }):wait()
-	if diff_obj.code ~= 0 or diff_obj.stdout == "" then
-		vim.notify("No staged changes to commit. Run 'git add' first.", vim.log.levels.WARN)
+	if is_generating then
+		vim.notify("Commit message generation is already in progress.", vim.log.levels.WARN)
 		return
 	end
-	local git_diff = diff_obj.stdout
 
-	local system_prompt =
-		[[You are an expert developer assistant. Your sole task is to analyze the provided git diff and write a concise commit message.
+	local git_diff = get_staged_diff()
+	if not git_diff then
+		vim.notify("No staged changes. Run 'git add' first.", vim.log.levels.WARN)
+		return
+	end
 
-STRICT RULES:
-1. Output ONLY the raw commit message. Do NOT write any introduction, markdown formatting, backticks, explanation, or code blocks.
-2. Format using Conventional Commits: <type>(<scope>): <description>
-3. Keep the title (first line) under 50 characters, lowercase, in the imperative mood (e.g., 'fix bug' instead of 'fixed bug'). No ending period.
-4. If changes are complex, add a body separated by a blank line, wrapped at 72 characters. Focus on WHY the change was made, not just WHAT changed.]]
+	local system_prompt = [[Your only task is to analyze the provided git diff and output a concise
+    Conventional Commit message.
+
+If the diff includes multiple logical changes, behavioral changes, migrations,
+or non-obvious reasoning, add a body after a blank line, wrapped at 72
+characters. Focus on WHY the change was made, not just WHAT changed.
+]]
 
 	local payload = vim.json.encode({
 		model = model,
 		system = system_prompt,
 		prompt = git_diff,
+		think = false,
 		stream = false,
 		options = {
-			temperature = 0 - 0.2, -- keeps the output highly structured and disciplined
+			temperature = 0.1, -- keeps the output highly structured and disciplined
 			top_p = 0.9, -- allows for some creativity while still being focused
-			max_tokens = 256, -- limit the length of the commit message
+			num_predict = 256, -- limit the length of the commit message
+			num_ctx = 8192, -- context window size
 		},
 	})
 
@@ -31,6 +81,7 @@ STRICT RULES:
 	local spinner_idx = 1
 	local uv = vim.uv or vim.loop
 	local timer = uv.new_timer()
+	is_generating = true
 
 	timer:start(
 		0,
@@ -54,6 +105,7 @@ STRICT RULES:
 		payload,
 	}, { text = true }, function(obj)
 		vim.schedule(function()
+			is_generating = false
 			timer:stop()
 			timer:close()
 			vim.api.nvim_echo({ { "", "Normal" } }, false, {}) -- Clear echo/status line
@@ -72,28 +124,24 @@ STRICT RULES:
 			local commit_message = decoded.response:gsub("^%s*(.-)%s*$", "%1")
 			local lines = vim.split(commit_message, "\n")
 
-			vim.api.nvim_buf_set_lines(0, 0, 0, false, lines)
+			vim.api.nvim_buf_set_lines(0, 0, 1, false, lines)
 			vim.notify("Commit message generated!", vim.log.levels.INFO)
 		end)
 	end)
 end
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "gitcommit",
-	callback = function()
-		vim.keymap.set("n", "<leader>c", function()
-			local model = "qwen2.5-coder:1.5b"
-			generate_commit_message(model)
-		end, { buffer = true, desc = "Generate commit message with CopilotChat" })
-	end,
-})
+local models = {
+	{ key = "<leader>c", model = "qwen2.5-coder:1.5b", desc = "Generate commit (fast)" },
+	{ key = "<leader>bc", model = "qwen2.5-coder:7b", desc = "Generate commit (big)" },
+}
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "gitcommit",
 	callback = function()
-		vim.keymap.set("n", "<leader>bc", function()
-			local model = "qwen2.5-coder:7b"
-			generate_commit_message(model)
-		end, { buffer = true, desc = "Generate commit message with CopilotChat" })
+		for _, entry in ipairs(models) do
+			vim.keymap.set("n", entry.key, function()
+				generate_commit_message(entry.model)
+			end, { buffer = true, desc = entry.desc })
+		end
 	end,
 })
