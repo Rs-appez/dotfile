@@ -7,7 +7,7 @@ require("CopilotChat.config").providers.locals = {
 	end,
 
 	get_models = function(headers)
-		local response, err = require("CopilotChat.utils").curl_get("http://localhost:11434/v1/models", {
+		local response, err = require("CopilotChat.utils.curl").get("http://localhost:11434/v1/models", {
 			headers = headers,
 			json_response = true,
 		})
