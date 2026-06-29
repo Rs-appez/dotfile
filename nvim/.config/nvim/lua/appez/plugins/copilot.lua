@@ -20,6 +20,17 @@ vim.keymap.set("i", "<C-L>", "<Plug>(copilot-accept-line)")
 -- 		end, { buffer = true, desc = "Generate commit message with CopilotChat" })
 -- 	end,
 -- })
+--
+local function get_default_model()
+	local hostname = vim.fn.hostname()
+	if hostname == "archDesktop" then
+		return "gemma4:e4b"
+	elseif hostname == "archLaptop" then
+		return "qwen2.5-coder:3b"
+	else
+		return "gpt-5-mini"
+	end
+end
 
 return {
 	{ "github/copilot.vim" },
@@ -33,7 +44,7 @@ return {
 		opts = {
 			-- See Configuration section for options
 			-- lazy.nvim opts
-			model = "qwen2.5-coder:3b",
+			model = get_default_model(),
 
 			window = {
 				layout = "horizontal",
