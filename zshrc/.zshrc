@@ -220,7 +220,7 @@ alias tat="tmux attach -t"
 alias tl="tmux -L"
 
 # atac
-export ATAC_KEY_BINDINGS="~/.config/atac/key_bindings.toml"
+# export ATAC_KEY_BINDINGS="~/.config/atac/key_bindings.toml"
 
 # spicetify
 export PATH=$PATH:/home/appez/.spicetify
