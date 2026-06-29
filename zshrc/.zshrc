@@ -112,6 +112,7 @@ bindkey -M vicmd 'v' edit-command-line
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 export DEFAULT_USER="appez"
+export HOSTNAME="$(hostname)"
 
 # export XDG_DATA_DIRS="/usr/local/share:/usr/share:/var/lib/flatpak/exports/share/applications"
 #
