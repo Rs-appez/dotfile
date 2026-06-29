@@ -33,6 +33,7 @@ return {
 		opts = {
 			-- See Configuration section for options
 			-- lazy.nvim opts
+			model = "qwen2.5-coder:3b",
 
 			window = {
 				layout = "horizontal",
