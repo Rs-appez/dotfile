@@ -147,14 +147,23 @@ local function generate_commit_message(model)
 end
 
 local models = {
-	{ key = "<leader>c", model = "qwen2.5-coder:7b", desc = "Generate commit (fast)" },
-	{ key = "<leader>bc", model = "gemma4:e4b", desc = "Generate commit (big)" },
+	archDesktop = {
+		{ key = "<leader>c", model = "qwen2.5-coder:7b", desc = "Generate commit (fast)" },
+		{ key = "<leader>bc", model = "gemma4:e4b", desc = "Generate commit (big)" },
+	},
+	archLaptop = {
+		{ key = "<leader>c", model = "qwen2.5-coder:3b", desc = "Generate commit (fast)" },
+		{ key = "<leader>bc", model = "qwen2.5-coder:7b", desc = "Generate commit (big)" },
+	},
 }
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "gitcommit",
 	callback = function()
-		for _, entry in ipairs(models) do
+		local hostname = vim.fn.hostname()
+		local machine_models = models[hostname]
+
+		for _, entry in ipairs(machine_models) do
 			vim.keymap.set("n", entry.key, function()
 				generate_commit_message(entry.model)
 			end, { buffer = true, desc = entry.desc })
