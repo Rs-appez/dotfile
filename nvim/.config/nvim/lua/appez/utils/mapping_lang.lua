@@ -108,7 +108,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set(
 			"n",
 			execute_mapping,
-			execute_script("deno"),
+			execute_script("bun"),
 			{ desc = "Execute current JavaScript/TypeScript script" }
 		)
 		vim.keymap.set(
