@@ -134,6 +134,9 @@ alias -g serv="server.appez.cafe"
 alias -g nas="ns.appez.cafe"
 alias -g desk="desktop.appez.cafe"
 
+# ssh agent
+eval "$(ssh-agent -s)"
+
 #python
 alias python="python3"
 alias py="python3"
