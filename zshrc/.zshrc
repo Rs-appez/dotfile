@@ -135,7 +135,8 @@ alias -g nas="ns.appez.cafe"
 alias -g desk="desktop.appez.cafe"
 
 # ssh agent
-eval "$(ssh-agent -s)"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 
 #python
 alias python="python3"
