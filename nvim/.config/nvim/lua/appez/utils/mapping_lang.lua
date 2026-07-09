@@ -16,19 +16,31 @@ local log_mapping = "<leader>lg"
 local log_macro_print = 'viw"lyoprint(""lpa : ", "lpa)'
 
 -- Python
+local function get_python_cmd()
+	if vim.fn.filereadable(vim.fn.getcwd() .. "/uv.lock") == 1 then
+		return "uv run python"
+	end
+	return "python3"
+end
+
 local function run_module()
 	local current_file = vim.fn.expand("%:p")
 	local cwd = vim.fn.getcwd()
 	local rel_path = current_file:sub(#cwd + 2):gsub("%.py$", ""):gsub("/", ".")
 	if rel_path ~= "" then
-		return ":wa<CR>:sp<CR>:term time python3 -m " .. rel_path .. "<CR>"
+		return ":wa<CR>:sp<CR>:term time " .. get_python_cmd() .. " -m " .. rel_path .. "<CR>"
 	end
 	return ":echo 'Cannot determine module name'<CR>"
 end
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "python",
 	callback = function()
-		vim.keymap.set("n", execute_mapping, execute_script("python3"), { desc = "Execute current Python script" })
+		vim.keymap.set(
+			"n",
+			execute_mapping,
+			execute_script(get_python_cmd()),
+			{ desc = "Execute current Python script" }
+		)
 		vim.keymap.set(
 			"v",
 			log_mapping,
