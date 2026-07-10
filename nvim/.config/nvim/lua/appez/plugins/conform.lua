@@ -28,11 +28,17 @@ return {
 			go = { "gofmt" },
 			sql = { "pgformatter" },
 			rust = { "rustfmt" },
+			terraform = { "terraform" },
 		},
 		formatters = {
 			pgformatter = {
 				command = "pg_format",
 				args = { "-" },
+				stdin = true,
+			},
+			terraform = {
+				command = "terraform",
+				args = { "fmt", "-" },
 				stdin = true,
 			},
 		},
