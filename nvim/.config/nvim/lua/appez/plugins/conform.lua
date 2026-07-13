@@ -29,6 +29,7 @@ return {
 			sql = { "pgformatter" },
 			rust = { "rustfmt" },
 			terraform = { "terraform" },
+			make = { "mbake" },
 		},
 		formatters = {
 			pgformatter = {
@@ -40,6 +41,11 @@ return {
 				command = "terraform",
 				args = { "fmt", "-" },
 				stdin = true,
+			},
+			mbake = {
+				command = "mbake",
+				args = { "format", "$FILENAME" },
+				stdin = false,
 			},
 		},
 		format_on_save = {
