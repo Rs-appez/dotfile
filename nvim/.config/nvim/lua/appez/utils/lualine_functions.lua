@@ -26,6 +26,7 @@ function M.codeCompanionModel()
 		end
 		return "󰚩  " .. name
 	end
+	return ""
 end
 
 return M
