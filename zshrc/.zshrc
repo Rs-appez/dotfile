@@ -129,6 +129,10 @@ alias shut="shutdown -h now"
 alias open="xdg-open"
 alias trig="tree --gitignore --dirsfirst -C -L 2"
 
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
 # homelab
 alias -g serv="server.appez.cafe"
 alias -g nas="ns.appez.cafe"
