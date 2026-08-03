@@ -227,8 +227,6 @@ alias tk="tmux kill-session -t"
 alias tat="tmux attach -t"
 alias tl="tmux -L"
 
-# atac
-# export ATAC_KEY_BINDINGS="~/.config/atac/key_bindings.toml"
 
 # spicetify
 export PATH=$PATH:/home/appez/.spicetify
@@ -244,12 +242,6 @@ for script in "$MY_SCRIPTS"/*.zsh; do
     fi
 done
 
-# Add .NET Core SDK tools
-export PATH="$PATH:/home/appez/.dotnet/tools"
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-
-# Flutter
-#source <(flutter bash-completion)
 
 # bun
 [ -s "/home/appez/.bun/_bun" ] && source "/home/appez/.bun/_bun"
