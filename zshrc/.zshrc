@@ -133,6 +133,10 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+
 # homelab
 alias -g serv="server.appez.cafe"
 alias -g nas="ns.appez.cafe"
