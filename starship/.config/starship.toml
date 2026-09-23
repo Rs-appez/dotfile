@@ -1,0 +1,43 @@
+# Disable the blank line at the start of the prompt for a cleaner look
+add_newline = false
+
+# Define the exact order and modules for a minimal, single-line prompt
+format = """
+$directory\
+$git_branch\
+$git_status\
+$line_break\
+$character"""
+
+[directory]
+style = "bold cyan"
+format = "[$path]($style) "
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+style = "bold purple"
+format = "on [$symbol$branch]($style) "
+symbol = " "
+
+[git_status]
+style = "bold yellow"
+# Breaks out every specific status instead of lumping them together
+format = '([\[$ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed\]]($style) )'
+
+# Custom symbols for maximum readability
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+staged = "+"
+modified = "!"
+untracked = "?"
+renamed = "»"
+deleted = "✘"
+conflicted = "💥"
+stashed = "📦"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[❮](bold yellow)"
