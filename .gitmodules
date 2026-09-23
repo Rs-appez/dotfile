@@ -4,3 +4,6 @@
 [submodule "hyprland"]
 	path = hyprland/.config/hypr
 	url = https://github.com/Rs-appez/hyprland-config
+[submodule "zshrc"]
+	path = zshrc
+	url = https://github.com/Rs-appez/zsh_config
