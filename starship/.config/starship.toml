@@ -5,6 +5,8 @@ add_newline = false
 format = """
 $status\
 $line_break\
+$username\
+$hostname\
 $directory\
 $git_branch\
 $git_status\
@@ -14,6 +16,17 @@ $rust\
 $terraform\
 $line_break\
 ☕ $character"""
+
+[username]
+show_always = false
+format = "[$user@]($style)"
+style_user = "bold blue"
+style_root = "bold red"
+
+[hostname]
+ssh_only = true
+format = "[$hostname 🌐]($style) "
+style = "bold blue"
 
 [directory]
 style = "bold cyan"
