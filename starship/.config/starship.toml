@@ -11,9 +11,10 @@ $character"""
 
 [directory]
 style = "bold cyan"
-format = "[$path]($style) "
+format = "[$path]($style)[$read_only]($read_only_style) "
 truncation_length = 3
 truncate_to_repo = true
+read_only = " 🔒"
 
 [git_branch]
 style = "bold purple"
