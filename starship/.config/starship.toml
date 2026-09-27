@@ -3,6 +3,8 @@ add_newline = false
 
 # Define the exact order and modules for a minimal, single-line prompt
 format = """
+$status\
+$line_break\
 $directory\
 $git_branch\
 $git_status\
@@ -40,5 +42,11 @@ stashed = "📦"
 
 [character]
 success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold red)"
+error_symbol = "[❯](bold green)"
 vicmd_symbol = "[❮](bold yellow)"
+
+[status]
+disabled = false
+format = '[\(╯°□°\)╯︵ ┻━┻]($style) '
+style = "red"
+
