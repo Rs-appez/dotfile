@@ -10,6 +10,7 @@ $git_branch\
 $git_status\
 $docker_context\
 $python\
+$rust\
 $line_break\
 ☕ $character"""
 
@@ -60,3 +61,8 @@ style = "bold yellow"
 format = "[🐳 $context]($style) "
 style = "bold blue"
 only_with_files = true
+
+[rust]
+format = "[🦀 $version]($style) "
+style = "bold red"
+
