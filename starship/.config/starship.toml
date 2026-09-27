@@ -8,6 +8,7 @@ $line_break\
 $directory\
 $git_branch\
 $git_status\
+$python\
 $line_break\
 ☕ $character"""
 
@@ -50,3 +51,6 @@ disabled = false
 format = '[\(╯°□°\)╯︵ ┻━┻]($style) '
 style = "red"
 
+[python]
+format = '[🐍 $version (\($virtualenv\))]($style) '
+style = "bold yellow"
