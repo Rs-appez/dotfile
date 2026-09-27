@@ -8,6 +8,7 @@ $line_break\
 $directory\
 $git_branch\
 $git_status\
+$docker_context\
 $python\
 $line_break\
 ☕ $character"""
@@ -54,3 +55,8 @@ style = "red"
 [python]
 format = '[🐍 $version (\($virtualenv\))]($style) '
 style = "bold yellow"
+
+[docker_context]
+format = "[🐳 $context]($style) "
+style = "bold blue"
+only_with_files = true
