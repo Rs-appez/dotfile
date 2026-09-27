@@ -11,6 +11,7 @@ $git_status\
 $docker_context\
 $python\
 $rust\
+$terraform\
 $line_break\
 ☕ $character"""
 
@@ -66,3 +67,6 @@ only_with_files = true
 format = "[🦀 $version]($style) "
 style = "bold red"
 
+[terraform]
+detect_folders = [".terraform", "terraform"]
+format = "[$symbol$workspace]($style) "
