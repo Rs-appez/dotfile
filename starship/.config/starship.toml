@@ -1,5 +1,7 @@
 # Disable the blank line at the start of the prompt for a cleaner look
 add_newline = false
+command_timeout = 2000
+scan_timeout = 30
 
 # Define the exact order and modules for a minimal, single-line prompt
 format = """
