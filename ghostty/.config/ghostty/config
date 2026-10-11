@@ -52,3 +52,5 @@ theme = Kanagawa Wave
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 gtk-single-instance = true
+
+keybind = alt+t=text:~
